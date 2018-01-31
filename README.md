@@ -23,7 +23,7 @@ Second set your host ip address in the `anmp.sh`, containers will communicate wi
 
 At last, use `anmp.sh` to manage docker containers. It is very easy to use these commands.
 
-* `./anmp.sh init`: first init your MySQL database if `www/data` directory is empty.
-* `./anmp.sh start <all/nginx/mysql/phpfpm>`: start single or all docker containers.
-* `./anmp.sh stop <all/nginx/mysql/phpfpm>`: stop single or all docker containers.
-* `./anmp.sh shell <nginx/mysql/phpfpm>`: into shell on running docker containers.
+* `./anmp.sh init : first init your MySQL database if <www/data> directory is empty.`
+* `./anmp.sh start <all/nginx/mysql/phpfpm> : start single or all docker containers.`
+* `./anmp.sh stop <all/nginx/mysql/phpfpm> : stop single or all docker containers.`
+* `./anmp.sh shell <nginx/mysql/phpfpm> : into shell on running docker containers.`
