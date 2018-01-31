@@ -11,11 +11,11 @@ After that, you will get docker images which can be checked with `docker images`
 ## Deploy
 First put your virtual host config files, html docs and databases in the `www` directory.
 
-* `data`: MySQL databases directory
-* `logs`: Nginx, MySQL and PHP-FPM logs directory
-* `host.d`: Nginx virtual host config files directory
-* `htdocs`: Nginx html docs directory of localhost
-* `html`: Nginx html docs directory of public site
+* `data : MySQL databases directory`
+* `logs : Nginx, MySQL and PHP-FPM logs directory`
+* `host.d : Nginx virtual host config files directory`
+* `htdocs : Nginx html docs directory of localhost`
+* `html : Nginx html docs directory of public site`
 
 Second set your host ip address in the `anmp.sh`, containers will communicate with each other using host ip address.
 
