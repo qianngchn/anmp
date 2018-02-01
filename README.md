@@ -9,19 +9,19 @@ You should have installed `docker` first, then you can run the following command
 After that, you will get docker images which can be checked with `docker images`.
 
 ## Deploy
-First put your virtual host config files, html docs and databases in the `www` directory.
+First, put your virtual host config files, html docs and databases in the `www` directory.
 
-* `data : MySQL databases directory`
-* `logs : Nginx, MySQL and PHP-FPM logs directory`
+* `data : MySQL databases and logs directory`
+* `logs : Nginx and PHP-FPM logs directory`
 * `host.d : Nginx virtual host config files directory`
 * `htdocs : Nginx html docs directory of localhost`
-* `html : Nginx html docs directory of public site`
+* `html : Nginx html docs directory of public sites`
 
-Second set your host ip address in the `anmp.sh`, containers will communicate with each other using host ip address.
+Second, set your host ip address in the `anmp.sh`, containers will communicate with each other using host ip address.
 
     HOSTIP="192.168.1.90" # host ip address of machine
 
-At last, use `anmp.sh` to manage docker containers. It is very easy to use these commands.
+Last, use `anmp.sh` to manage docker containers. It is very easy to use these commands.
 
 * `./anmp.sh init : first init your MySQL database if <www/data> directory is empty.`
 * `./anmp.sh start <all/nginx/mysql/phpfpm> : start single or all docker containers.`

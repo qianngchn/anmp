@@ -8,17 +8,17 @@ USERNAME="qianngchn"
 IMAGENAME="mysql"
 CONTAINER="mysql"
 USERIMAGE="$USERNAME/$IMAGENAME"
-RUNFLAGS="--name $CONTAINER -p 3306:3306 $FLAGS"
+FLAGS="--name $CONTAINER -p 3306:3306 $FLAGS"
 SHELL="sh"
 
 if [ ! -z $ACTION ]; then
     case $ACTION in
         init)
-            $DOCKER run -it --rm $RUNFLAGS $USERIMAGE init
+            $DOCKER run -it --rm $FLAGS $USERIMAGE init
             ;;
 
         start)
-            $DOCKER run --detach $RUNFLAGS $USERIMAGE start
+            $DOCKER run --detach $FLAGS $USERIMAGE start
             ;;
 
         stop)

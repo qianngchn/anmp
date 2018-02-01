@@ -8,13 +8,13 @@ USERNAME="qianngchn"
 IMAGENAME="nginx"
 CONTAINER="nginx"
 USERIMAGE="$USERNAME/$IMAGENAME"
-RUNFLAGS="--detach --name $CONTAINER -p 80:80 $FLAGS"
+FLAGS="--detach --name $CONTAINER -p 80:80 $FLAGS"
 SHELL="sh"
 
 if [ ! -z $ACTION ]; then
     case $ACTION in
         start)
-            $DOCKER run $RUNFLAGS $USERIMAGE
+            $DOCKER run $FLAGS $USERIMAGE
             ;;
 
         stop)

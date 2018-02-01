@@ -8,13 +8,13 @@ USERNAME="qianngchn"
 IMAGENAME="phpfpm"
 CONTAINER="phpfpm"
 USERIMAGE="$USERNAME/$IMAGENAME"
-RUNFLAGS="--detach --name $CONTAINER -p 9000:9000 $FLAGS"
+FLAGS="--detach --name $CONTAINER -p 9000:9000 $FLAGS"
 SHELL="sh"
 
 if [ ! -z $ACTION ]; then
     case $ACTION in
         start)
-            $DOCKER run $RUNFLAGS $USERIMAGE
+            $DOCKER run $FLAGS $USERIMAGE
             ;;
 
         stop)

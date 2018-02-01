@@ -10,8 +10,8 @@ SERVICE="$2"
 DOCKER="docker"
 
 MYSQLSCRIPT="$HERE/mysql/docker.sh"
-MYSQLINITFLAGS="--add-host host:$HOSTIP -v $HERE/www/logs:/var/log/mysql -v $HERE/www/data:/var/lib/mysql"
-MYSQLSTARTFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/logs:/var/log/mysql -v $HERE/www/data:/var/lib/mysql"
+MYSQLINITFLAGS="-v $HERE/www/data:/var/lib/mysql"
+MYSQLSTARTFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/data:/var/lib/mysql"
 
 PHPFPMSCRIPT="$HERE/phpfpm/docker.sh"
 PHPFPMFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/logs:/var/log/php7 -v $HERE/www/html:/var/www/html -v $HERE/www/htdocs:/var/www/localhost/htdocs"
@@ -29,26 +29,14 @@ if [ ! -z $ACTION ]; then
             if [ ! -z $SERVICE ]; then
                 if [ $SERVICE = "mysql" -o $SERVICE = "all" ]; then
                     $MYSQLSCRIPT start $MYSQLSTARTFLAGS
-
-                    $DOCKER exec mysql chown -R nobody:nobody /var/log/mysql
-                    $DOCKER exec mysql chown -R nobody:nobody /var/lib/mysql
                 fi
 
                 if [ $SERVICE = "phpfpm" -o $SERVICE = "all" ]; then
                     $PHPFPMSCRIPT start $PHPFPMFLAGS
-
-                    $DOCKER exec phpfpm chown -R nobody:nobody /var/log/php7
-                    $DOCKER exec phpfpm chown -R nobody:nobody /var/www/html
-                    $DOCKER exec phpfpm chown -R nobody:nobody /var/www/localhost/htdocs
                 fi
 
                 if [ $SERVICE = "nginx" -o $SERVICE = "all" ]; then
                     $NGINXSCRIPT start $NGINXFLAGS
-
-                    $DOCKER exec nginx chown -R root:root /etc/nginx/conf.d
-                    $DOCKER exec nginx chown -R root:root /var/log/nginx
-                    $DOCKER exec nginx chown -R nobody:nobody /var/www/html
-                    $DOCKER exec nginx chown -R nobody:nobody /var/www/localhost/htdocs
                 fi
             fi
             ;;
