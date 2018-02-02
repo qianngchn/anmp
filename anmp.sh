@@ -3,14 +3,14 @@ set -o errexit
 
 LINK=$(readlink -f "$0")
 HERE=$(dirname "$LINK")
-HOSTIP="192.168.1.90"
+HOSTIP="172.17.42.1"
 
 ACTION="$1"
 SERVICE="$2"
 DOCKER="docker"
 
 MYSQLSCRIPT="$HERE/mysql/docker.sh"
-MYSQLINITFLAGS="-v $HERE/www/data:/var/lib/mysql"
+MYSQLINITFLAGS="--add-host host:$HOSTIP -v $HERE/www/data:/var/lib/mysql"
 MYSQLSTARTFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/data:/var/lib/mysql"
 
 PHPFPMSCRIPT="$HERE/phpfpm/docker.sh"

@@ -17,9 +17,11 @@ First, put your virtual host config files, html docs and databases in the `www` 
 * `htdocs : Nginx html docs directory of localhost`
 * `html : Nginx html docs directory of public sites`
 
-Second, set your host ip address in the `anmp.sh`, containers will communicate with each other using host ip address.
+Second, change ip address of name `host` in `anmp.sh` to docker bridge ip address of yours.
 
-    HOSTIP="192.168.1.90" # host ip address of machine
+    HOSTIP="172.17.42.1" # docker bridge ip address of host machine
+
+Remember docker containers communicate with each other using name `host` not `localhost`.
 
 Last, use `anmp.sh` to manage docker containers. It is very easy to use these commands.
 

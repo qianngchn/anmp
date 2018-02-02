@@ -14,16 +14,16 @@ if [ ! -z $ACTION ]; then
                 chown -R root:root /run/mysqld
                 chown -R root:root /var/lib/mysql
 
-                echo "Now init mysql database, please wait for a while."
+                echo "Step 1: init mysql database, please wait for a while."
                 mysql_install_db --user=root &> /dev/null
 
-                echo "Now start mysql daemon at background."
+                echo "Step 2: start mysql daemon at background."
                 mysqld --user=root $FLAGS &> /dev/null &
 
-                echo "Now start mysql secure installation."
+                echo "Step 3: start mysql secure installation."
                 mysql_secure_installation
 
-                echo "Now start mysql client with command < mysql -u root -p >, you can create or import databases."
+                echo "Step 4: start mysql client with command < mysql -u root -p >, you can create users and import databases."
                 exec mysql -u root -p
             fi
             ;;
