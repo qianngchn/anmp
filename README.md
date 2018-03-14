@@ -26,7 +26,7 @@ Remember docker containers communicate with each other using name `host` not `lo
 Last, use `anmp.sh` to manage docker containers. It is very easy to use these commands.
 
 * `./anmp.sh init : first init your MySQL database if <www/data> directory is empty.`
-* `./anmp.sh status : show service status of all docker containers, running or stopped.`
+* `./anmp.sh status : show status of all docker containers, none stands for stopped.`
 * `./anmp.sh start <all/nginx/mysql/phpfpm> : start single or all docker containers.`
 * `./anmp.sh stop <all/nginx/mysql/phpfpm> : stop single or all docker containers.`
 * `./anmp.sh restart <all/nginx/mysql/phpfpm> : restart single or all docker containers.`
