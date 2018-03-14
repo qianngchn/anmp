@@ -7,7 +7,6 @@ HOSTIP="172.17.42.1"
 
 ACTION="$1"
 SERVICE="$2"
-DOCKER="docker"
 
 MYSQLSCRIPT="$HERE/mysql/docker.sh"
 MYSQLINITFLAGS="--add-host host:$HOSTIP -v $HERE/www/data:/var/lib/mysql"
@@ -23,6 +22,10 @@ if [ ! -z $ACTION ]; then
     case $ACTION in
         init)
             $MYSQLSCRIPT init $MYSQLINITFLAGS
+            ;;
+
+        status)
+            $MYSQLSCRIPT status && $PHPFPMSCRIPT status && $NGINXSCRIPT status
             ;;
 
         start)
@@ -57,6 +60,22 @@ if [ ! -z $ACTION ]; then
             fi
             ;;
 
+        restart)
+            if [ ! -z $SERVICE ]; then
+                if [ $SERVICE = "mysql" -o $SERVICE = "all" ]; then
+                    $MYSQLSCRIPT restart $MYSQLSTARTFLAGS
+                fi
+
+                if [ $SERVICE = "phpfpm" -o $SERVICE = "all" ]; then
+                    $PHPFPMSCRIPT restart $PHPFPMFLAGS
+                fi
+
+                if [ $SERVICE = "nginx" -o $SERVICE = "all" ]; then
+                    $NGINXSCRIPT restart $NGINXFLAGS
+                fi
+            fi
+            ;;
+
         shell)
             if [ ! -z $SERVICE ]; then
                 if [ $SERVICE = "nginx" ]; then
@@ -75,7 +94,7 @@ if [ ! -z $ACTION ]; then
     esac
 else
     echo "Usage: $LINK <ACTION> [SERVICE]"
-    echo "  ACTION: <init/start/stop/shell>"
+    echo "  ACTION: <init/status/start/stop/restart/shell>"
     echo "  SERVICE: <all/nginx/phpfpm/mysql>"
 fi
 

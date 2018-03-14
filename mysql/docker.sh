@@ -17,6 +17,10 @@ if [ ! -z $ACTION ]; then
             $DOCKER run -it --rm $FLAGS $USERIMAGE init
             ;;
 
+        status)
+            $DOCKER ps -a -f name=$CONTAINER | grep $CONTAINER || true
+            ;;
+
         start)
             $DOCKER run --detach $FLAGS $USERIMAGE start
             ;;
@@ -24,6 +28,12 @@ if [ ! -z $ACTION ]; then
         stop)
             $DOCKER stop $CONTAINER
             $DOCKER rm $CONTAINER
+            ;;
+
+        restart)
+            $DOCKER stop $CONTAINER
+            $DOCKER rm $CONTAINER
+            $DOCKER run --detach $FLAGS $USERIMAGE start
             ;;
 
         shell)

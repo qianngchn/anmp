@@ -13,6 +13,10 @@ SHELL="sh"
 
 if [ ! -z $ACTION ]; then
     case $ACTION in
+        status)
+            $DOCKER ps -a -f name=$CONTAINER | grep $CONTAINER || true
+            ;;
+
         start)
             $DOCKER run $FLAGS $USERIMAGE
             ;;
@@ -20,6 +24,12 @@ if [ ! -z $ACTION ]; then
         stop)
             $DOCKER stop $CONTAINER
             $DOCKER rm $CONTAINER
+            ;;
+
+        restart)
+            $DOCKER stop $CONTAINER
+            $DOCKER rm $CONTAINER
+            $DOCKER run $FLAGS $USERIMAGE
             ;;
 
         shell)
