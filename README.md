@@ -1,5 +1,5 @@
 # anmp
-Docker Deployment of ANMP(Alpine, Nginx, MySQL, PHP-FPM)
+Docker Deployment of ANMP(Alpine, Nginx, MySQL, PHP with PHP-FPM)
 
 ## Install
 You should have installed `docker` first, then you can run the following commands.
@@ -12,10 +12,10 @@ After that, you will get docker images which can be checked with `docker images`
 First, put your virtual host config files, html docs and databases in the `www` directory.
 
 * `data : MySQL databases and logs directory`
-* `logs : Nginx and PHP-FPM logs directory`
 * `host.d : Nginx virtual host config files directory`
 * `htdocs : Nginx html docs directory of localhost`
 * `html : Nginx html docs directory of public sites`
+* `logs : PHP, PHP-FPM and Nginx logs directory`
 
 Second, change ip address of name `host` in `anmp.sh` to docker bridge ip address of yours.
 
