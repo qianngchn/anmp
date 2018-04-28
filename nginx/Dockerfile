@@ -2,7 +2,9 @@ FROM qianngchn/alpine:latest
 
 MAINTAINER Neal Qian <qianngchn@gmail.com>
 
-RUN apk --no-cache add nginx nginx-mod-http-geoip && mkdir -p /run/nginx /var/www/html \
+RUN apk --no-cache add nginx nginx-mod-http-geoip && mkdir -p /usr/share/GeoIP /run/nginx /var/www/html \
+    && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz \
+    && gzip -d GeoIP.dat.gz && mv GeoIP.dat /usr/share/GeoIP \
     && chown -R root:root /var/lib/nginx && chmod 755 /var/lib/nginx \
     && chown -R nobody:root /var/tmp/nginx \
     && chown -R nobody:nobody /var/www/html \
