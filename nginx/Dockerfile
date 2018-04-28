@@ -12,6 +12,7 @@ RUN apk --no-cache add nginx nginx-mod-http-geoip && mkdir -p /usr/share/GeoIP /
     && chown -R nobody:nobody /var/lib/nginx/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY custom.conf /etc/nginx/custom.conf
 COPY entrypoint.sh /entrypoint.sh
 
 EXPOSE 80
