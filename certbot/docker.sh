@@ -6,7 +6,7 @@ HERE="$(dirname $FILE)"
 
 if [ $# -lt 1 ]; then
     echo "Usage: $LINK <ACTION> [FLAGS]"
-    echo "  ACTION: <fetch/renew>"
+    echo "  ACTION: <fetch/renew/delete>"
     exit 1
 fi
 
@@ -26,6 +26,10 @@ case $ACTION in
 
     renew)
         $DOCKER run -it --rm $FLAGS $USERIMAGE renew
+        ;;
+
+    delete)
+        $DOCKER run -it --rm $FLAGS $USERIMAGE delete
         ;;
 esac
 

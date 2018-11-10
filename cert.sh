@@ -6,7 +6,7 @@ HERE="$(dirname $FILE)"
 
 if [ $# -ne 1 ]; then
     echo "Usage: $LINK <ACTION>"
-    echo "  ACTION: <fetch/renew>"
+    echo "  ACTION: <fetch/renew/delete>"
     exit 1
 fi
 
@@ -22,6 +22,10 @@ case $ACTION in
 
     renew)
         $SCRIPT renew $FLAGS
+        ;;
+
+    delete)
+        $SCRIPT delete $FLAGS
         ;;
 esac
 
