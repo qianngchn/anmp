@@ -5,3 +5,4 @@ all clean:
 	cd nginx && $(MAKE) $@
 	cd phpfpm && $(MAKE) $@
 	cd mysql && $(MAKE) $@
+	cd certbot && $(MAKE) $@
