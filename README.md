@@ -37,3 +37,4 @@ If you want to get a certificate from let's encrypt for the secure of your websi
 
 * `./cert.sh fetch: get a certficate which is stored in <www/ssl> directory.`
 * `./cert.sh renew: renew certficates to keep your websites secure always.`
+* `./cert.sh delete: delete certificates which you do not need any more.`
