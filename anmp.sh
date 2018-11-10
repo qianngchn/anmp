@@ -29,7 +29,7 @@ PHPFPMSCRIPT="$HERE/phpfpm/docker.sh"
 PHPFPMFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/logs:/var/log/php7 -v $HERE/www/html:/var/www/html -v $HERE/www/htdocs:/var/www/localhost/htdocs"
 
 NGINXSCRIPT="$HERE/nginx/docker.sh"
-NGINXFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/host.d:/etc/nginx/conf.d -v $HERE/www/logs:/var/log/nginx -v $HERE/www/html:/var/www/html -v $HERE/www/htdocs:/var/www/localhost/htdocs"
+NGINXFLAGS="--restart always --add-host host:$HOSTIP -v $HERE/www/host.d:/etc/nginx/conf.d -v $HERE/www/logs:/var/log/nginx -v $HERE/www/html:/var/www/html -v $HERE/www/htdocs:/var/www/localhost/htdocs -v $HERE/www/ssl:/var/www/ssl"
 
 case $ACTION in
     init)
