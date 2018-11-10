@@ -6,15 +6,15 @@ HERE="$(dirname $FILE)"
 
 if [ $# -ne 1 ]; then
     echo "Usage: $LINK <ACTION>"
-    echo "  ACTION: <certonly/renew>"
+    echo "  ACTION: <fetch/renew>"
     exit 1
 fi
 
 ACTION="$1"
 
 case $ACTION in
-    certonly)
-        certbot certonly
+    fetch)
+        certbot certonly --webroot --agree-tos
         ;;
 
     renew)

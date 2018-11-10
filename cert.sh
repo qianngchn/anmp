@@ -6,22 +6,22 @@ HERE="$(dirname $FILE)"
 
 if [ $# -ne 1 ]; then
     echo "Usage: $LINK <ACTION>"
-    echo "  ACTION: <certonly/renew>"
+    echo "  ACTION: <fetch/renew>"
     exit 1
 fi
 
 ACTION="$1"
 
-CERTBOTSCRIPT="$HERE/certbot/docker.sh"
-CERTBOTFLAGS="-v $HERE/www/html:/var/www/html -v $HERE/www/ssl:/var/www/ssl"
+SCRIPT="$HERE/certbot/docker.sh"
+FLAGS="-v $HERE/www/html:/var/www/html -v $HERE/www/ssl:/etc/letscrypt"
 
 case $ACTION in
-    certonly)
-        $CERTBOTSCRIPT certonly $CERTBOTFLAGS
+    fetch)
+        $SCRIPT fetch $FLAGS
         ;;
 
     renew)
-        $CERTBOTSCRIPT renew $CERTBOTFLAGS
+        $SCRIPT renew $FLAGS
         ;;
 esac
 
