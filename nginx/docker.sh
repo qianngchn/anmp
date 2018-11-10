@@ -17,7 +17,7 @@ USERNAME="qianngchn"
 IMAGENAME="nginx"
 CONTAINER="nginx"
 USERIMAGE="$USERNAME/$IMAGENAME"
-FLAGS="--detach --name $CONTAINER -p 80:80 $FLAGS"
+FLAGS="--detach --name $CONTAINER -p 80:80 -p 443:443 $FLAGS"
 SHELL="sh"
 
 case $ACTION in
