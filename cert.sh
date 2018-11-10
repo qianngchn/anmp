@@ -13,7 +13,7 @@ fi
 ACTION="$1"
 
 SCRIPT="$HERE/certbot/docker.sh"
-FLAGS="-v $HERE/www/html:/var/www/html -v $HERE/www/ssl:/etc/letscrypt"
+FLAGS="-v $HERE/www/html:/var/www/html -v $HERE/www/ssl:/etc/letsencrypt"
 
 case $ACTION in
     fetch)
