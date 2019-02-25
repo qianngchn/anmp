@@ -12,7 +12,7 @@ fi
 
 ACTION="$1"
 
-FLAGS="--console --pid-file=/var/lib/mysql/mysql.pid --general-log --general-log-file=/var/lib/mysql/mysql.log --slow-query-log --slow-query-log-file=/var/lib/mysql/mysql-slow.log --log-error=/var/lib/mysql/mysql.err"
+FLAGS="--console --skip-networking=0 --port=3306 --socket=/run/mysqld/mysqld.sock --pid-file=/var/lib/mysql/mysql.pid --general-log --general-log-file=/var/lib/mysql/mysql.log --slow-query-log --slow-query-log-file=/var/lib/mysql/mysql-slow.log --log-error=/var/lib/mysql/mysql.err"
 
 case $ACTION in
     init)
