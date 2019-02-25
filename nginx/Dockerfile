@@ -3,7 +3,7 @@ FROM qianngchn/alpine:latest
 MAINTAINER Neal Qian <qianngchn@gmail.com>
 
 RUN apk --no-cache add nginx nginx-mod-http-geoip && mkdir -p /usr/share/GeoIP /run/nginx /var/www/html /var/www/ssl \
-    && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz \
+    && wget https://github.com/qianngchn/anmp/raw/master/geoip/GeoIP.dat.gz \
     && gzip -d GeoIP.dat.gz && mv GeoIP.dat /usr/share/GeoIP \
     && chown -R root:root /var/lib/nginx && chmod 755 /var/lib/nginx \
     && chown -R nobody:root /var/tmp/nginx \
